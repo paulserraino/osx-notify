@@ -1,0 +1,20 @@
+{
+  "name": "osx-notify",
+  "version": "0.0.0",
+  "description": "native osx push notifications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "keywords": [
+    "osx"
+  ],
+  "author": "Paul Serraino",
+  "license": "MIT",
+  "gypfile": true,
+  "dependencies": {
+    "nan": "~1.8.4",
+    "bindings": "~1.2.1"
+  }
+}
