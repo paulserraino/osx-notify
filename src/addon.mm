@@ -7,6 +7,8 @@ void Init(v8::Handle<v8::Object> exports) {
 	tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
 	NODE_SET_PROTOTYPE_METHOD(tpl, "_setTitle", Notifier::setTitle);
+	NODE_SET_PROTOTYPE_METHOD(tpl, "_setSubTitle", Notifier::setSubTitle);
+	NODE_SET_PROTOTYPE_METHOD(tpl, "_setInformativeText", Notifier::setInformativeText);
 	NODE_SET_PROTOTYPE_METHOD(tpl, "_send", Notifier::send);
 
 	exports->Set(NanNew<v8::String>("Notifier"), tpl->GetFunction());

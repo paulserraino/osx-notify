@@ -45,7 +45,7 @@ self.keepRunning = NO;
 * notify
 *
 */
-- (void) notify {
+- (void) notify:(NSMutableDictionary *) opts {
    if ( installNSBundleHook() ) {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -57,9 +57,10 @@ self.keepRunning = NO;
     nc.delegate = ncDelegate;
     
     NSUserNotification *note = [[NSUserNotification alloc] init];
-    note.title = [defaults stringForKey:@"title"];
-    note.subtitle = [defaults stringForKey:@"subtitle"];
-    note.informativeText = [defaults stringForKey:@"informativeText"];
+
+    note.title = opts[@"title"];
+    note.subtitle = opts[@"subtitle"];
+    note.informativeText = opts[@"informativeText"];
     
     if (!(note.title || note.subtitle || note.informativeText)) {
         note.title = @"Usage: usernotification";

@@ -4,13 +4,13 @@ class Notifier : public node::ObjectWrap
 {
 private:
 	std::string title;
-	NSAutoreleasePool * pool;
-	AppDelegate *delegate;
+	std::string subtitle;
+	std::string informativeText;
 public:
-	Notifier();
-	~Notifier();
 
 	static NAN_METHOD(New);
 	static NAN_METHOD(setTitle);
+	static NAN_METHOD(setSubTitle);
+	static NAN_METHOD(setInformativeText);
 	static NAN_METHOD(send);
 };

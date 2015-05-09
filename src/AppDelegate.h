@@ -4,5 +4,5 @@
 @interface AppDelegate : NSObject<NSUserNotificationCenterDelegate>
 
 @property (nonatomic, assign) BOOL keepRunning;
-- (void) notify;
+- (void) notify:(NSMutableDictionary *) opts;
 @end

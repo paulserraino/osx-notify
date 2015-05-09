@@ -1,7 +1,19 @@
 #OSX Notify
 
 ```
-npm install
+npm install osx-notify
+```
+
+```js
+var Notifier = require('osx-notify');
+
+var notifier = new Notifier();
+
+notifier.send({
+	title: "hello world",
+	subtitle: 'foo',
+	informativeText: 'bar' 
+})
 ```
 
 #LICENSE
