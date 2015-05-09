@@ -1,4 +1,5 @@
 #OSX Notify
+[![NPM](https://nodei.co/npm/osx-notify.png)](https://nodei.co/npm/osx-notify/)
 
 ```
 npm install osx-notify
