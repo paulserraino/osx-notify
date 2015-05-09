@@ -6,7 +6,9 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
+#include <string>
 
 #import "AppDelegate.h"
+#import "notifier.h"
 
 #endif

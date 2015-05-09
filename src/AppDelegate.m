@@ -2,6 +2,7 @@
 
 /**
 * Override the default NSBundle
+*
 */
 NSString *fakeBundleIdentifier = nil;
 
@@ -31,6 +32,7 @@ BOOL installNSBundleHook() {
 
 /**
 *	Define the application delegate
+*
 */
 @implementation AppDelegate
 
@@ -40,10 +42,9 @@ self.keepRunning = NO;
 }
 
 /**
-*		notify, a C style method that can be invoked from a cpp file
-*	
+* notify
+*
 */
-
 - (void) notify {
    if ( installNSBundleHook() ) {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

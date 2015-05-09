@@ -4,6 +4,7 @@
       "target_name": "addon",
       "sources": [ 
         "src/AppDelegate.m",
+        "src/notifier.m",
         "src/addon.mm"
       ],
       "include_dirs" : [

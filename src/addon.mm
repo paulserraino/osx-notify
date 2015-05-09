@@ -1,19 +1,15 @@
 #include "addon.h"
 
-NAN_METHOD(test) {
-	NanScope();
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init]; 
-	AppDelegate *h= [[AppDelegate alloc] init];
-	[h notify];
-	[pool drain];
-	NanReturnUndefined();
+void Init(v8::Handle<v8::Object> exports) {
+	v8::Local<v8::FunctionTemplate> tpl = NanNew<v8::FunctionTemplate>(Notifier::New);
+
+	tpl->SetClassName(NanNew("Notifier"));
+	tpl->InstanceTemplate()->SetInternalFieldCount(1);
+
+	NODE_SET_PROTOTYPE_METHOD(tpl, "_setTitle", Notifier::setTitle);
+	NODE_SET_PROTOTYPE_METHOD(tpl, "_send", Notifier::send);
+
+	exports->Set(NanNew<v8::String>("Notifier"), tpl->GetFunction());
 }
 
-void init(v8::Handle<v8::Object> exports) {
-	exports->Set(
-		NanNew<v8::String>("notify")
-		, NanNew<v8::FunctionTemplate>(test)->GetFunction()
-	);
-}
-
-NODE_MODULE(addon, init)
+NODE_MODULE(addon, Init)
