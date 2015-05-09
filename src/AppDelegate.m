@@ -31,7 +31,7 @@ BOOL installNSBundleHook() {
 }
 
 /**
-*	Define the application delegate
+* Define the application delegate
 *
 */
 @implementation AppDelegate
