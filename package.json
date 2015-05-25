@@ -10,6 +10,9 @@
   "keywords": [
     "osx"
   ],
+  "engines": {
+    "node": "0.10.x"
+  },
   "author": "Paul Serraino",
   "license": "MIT",
   "gypfile": true,
