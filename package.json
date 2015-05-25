@@ -1,11 +1,15 @@
 {
   "name": "osx-notify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "native osx push notifications",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "node-gyp rebuild"
+  },
+ "repository": {
+    "type": "git",
+    "url": "git://github.com/paulserraino/osx-notify.git"
   },
   "keywords": [
     "osx"
