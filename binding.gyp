@@ -1,5 +1,5 @@
 {
- "targets": [
+  "targets": [
     {
       "target_name": "addon",
       "sources": [ 
@@ -9,6 +9,11 @@
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")"
+      ],
+      "conditions": [
+        ["OS==\"mac\"", {
+          "libraries": [ "-framework Foundation" ]
+        }]
       ]
     }
   ]
