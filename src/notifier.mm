@@ -1,37 +1,29 @@
 #include "addon.h"
 
 NAN_METHOD(Notifier::New) {
-  NanScope();
   Notifier *notifier = new Notifier();
-  notifier->Wrap(args.This());
-  NanReturnValue(args.This());
+  notifier->Wrap(info.This());
+  info.GetReturnValue().Set(info.This());
 }
 
 NAN_METHOD(Notifier::setTitle) {
-  NanScope();
-  Notifier *self = ObjectWrap::Unwrap<Notifier>(args.This());
-  self->title = *NanUtf8String(args[0]);
-  NanReturnUndefined();
+  Notifier *self = Nan::ObjectWrap::Unwrap<Notifier>(info.This());
+  self->title = *Nan::Utf8String(info[0]);
 }
 
 NAN_METHOD(Notifier::setSubTitle) {
-  NanScope();
-  Notifier *self = ObjectWrap::Unwrap<Notifier>(args.This());
-  self->subtitle = *NanUtf8String(args[0]);
-  NanReturnUndefined();
+  Notifier *self = Nan::ObjectWrap::Unwrap<Notifier>(info.This());
+  self->subtitle = *Nan::Utf8String(info[0]);
 }
 
 NAN_METHOD(Notifier::setInformativeText) {
-  NanScope();
-  Notifier *self = ObjectWrap::Unwrap<Notifier>(args.This());
-  self->informativeText = *NanUtf8String(args[0]);
-  NanReturnUndefined();
+  Notifier *self = Nan::ObjectWrap::Unwrap<Notifier>(info.This());
+  self->informativeText = *Nan::Utf8String(info[0]);
 }
 
 NAN_METHOD(Notifier::send) {
-  NanScope();
-  Notifier *self = ObjectWrap::Unwrap<Notifier>(args.This());
-  NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init]; 
+  Notifier *self = Nan::ObjectWrap::Unwrap<Notifier>(info.This());
+  NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
   NSMutableDictionary *opts = [[NSMutableDictionary alloc] init];
 
   opts[@"title"] = [NSString stringWithUTF8String:self->title.c_str()];
@@ -45,5 +37,4 @@ NAN_METHOD(Notifier::send) {
   [pool drain];
 
   //TODO: return a callback
-  NanReturnUndefined();
 }

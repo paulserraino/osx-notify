@@ -1,6 +1,6 @@
 #include "addon.h"
 
-class Notifier : public node::ObjectWrap
+class Notifier : public Nan::ObjectWrap
 {
 private:
   std::string title;

@@ -1,17 +1,18 @@
 #include "addon.h"
 
-void Init(v8::Handle<v8::Object> exports) {
-  v8::Local<v8::FunctionTemplate> tpl = NanNew<v8::FunctionTemplate>(Notifier::New);
+NAN_MODULE_INIT(InitAddon) {
+  v8::Local<v8::FunctionTemplate> tpl = Nan::New<v8::FunctionTemplate>(Notifier::New);
 
-  tpl->SetClassName(NanNew("Notifier"));
+  tpl->SetClassName(Nan::New("Notifier").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  NODE_SET_PROTOTYPE_METHOD(tpl, "_setTitle", Notifier::setTitle);
-  NODE_SET_PROTOTYPE_METHOD(tpl, "_setSubTitle", Notifier::setSubTitle);
-  NODE_SET_PROTOTYPE_METHOD(tpl, "_setInformativeText", Notifier::setInformativeText);
-  NODE_SET_PROTOTYPE_METHOD(tpl, "_send", Notifier::send);
+  Nan::SetPrototypeMethod(tpl, "_setTitle", Notifier::setTitle);
+  Nan::SetPrototypeMethod(tpl, "_setSubTitle", Notifier::setSubTitle);
+  Nan::SetPrototypeMethod(tpl, "_setInformativeText", Notifier::setInformativeText);
+  Nan::SetPrototypeMethod(tpl, "_send", Notifier::send);
 
-  exports->Set(NanNew<v8::String>("Notifier"), tpl->GetFunction());
+  Nan::Set(target,
+      Nan::New("Notifier").ToLocalChecked(), Nan::GetFunction(tpl).ToLocalChecked());
 }
 
-NODE_MODULE(addon, Init)
+NODE_MODULE(addon, InitAddon)
